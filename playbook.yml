@@ -1,0 +1,11 @@
+---
+- name: Create user and configure sudo permissions
+  hosts: hosts_test_aws
+  become: true
+  tasks:
+    - name: Create user Doe
+      user:
+        name: Doe
+        shell: /bin/bash
+        create_home: yes
+        home: /home/Doe

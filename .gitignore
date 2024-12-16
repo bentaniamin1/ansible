@@ -1,0 +1,3 @@
+*.pem
+get-pip.py
+inventory.ini
