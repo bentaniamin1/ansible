@@ -1,0 +1,16 @@
+---
+# tasks file for ec2_aws
+- name: Start create a new EC2 instance with ip public
+  amazon.aws.ec2_instance:
+    name: instance
+    instance_type: t2.micro
+    image: #ami
+    region: us-east-1
+    AWS_ACCESS_KEY: "{{ AWS_ACCESS_KEY }}"
+    AWS_SECRET_KEY: "{{ AWS_SECRET_KEY }}"
+    security_group: default
+    network:
+      assign_public_ip: yes
+    wait: yes
+    tags:
+      Environment: "Test"
