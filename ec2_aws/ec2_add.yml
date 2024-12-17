@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Create a new EC2 instance with ip public
+      amazon.aws.ec2_instance:
+        name: mykey
+        instance_type: t2.micro
+        image: #ami
+        region: us-east-1
+        security_group: default
+        network:
+          assign_public_ip: yes
+        wait: yes
+        tags:
+          Environment: "Test"
