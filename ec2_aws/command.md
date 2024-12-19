@@ -4,3 +4,4 @@
 4) encrypting file existing -> ansible-vault encrypt main.yml --vault-password-file ../files/password
 5) ansible localhost -m ansible.builtin.debug -a var="aws_secret_key" -e "@main.yml" --vault-pass
 word-file ../files/password
+6) ansible-vault rekey
