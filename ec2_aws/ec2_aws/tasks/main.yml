@@ -1,4 +1,6 @@
 ---
+- name: Include encrypted vars
+  include_vars: roles/ec2_aws/vars/vault.yml
 # tasks file for ec2_aws
 - name: Start create a new EC2 instance with ip public
   amazon.aws.ec2_instance:
