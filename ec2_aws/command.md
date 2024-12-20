@@ -5,3 +5,5 @@
 5) ansible localhost -m ansible.builtin.debug -a var="aws_secret_key" -e "@main.yml" --vault-pass
 word-file ../files/password
 6) ansible-vault rekey
+
+7) CREATE file encrypted with vault if notn exist ansible-vault <path>/name_file.yml and the next step is include in main.yml in this case /tasks.main.yml (playbook.yml)
