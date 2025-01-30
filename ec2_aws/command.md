@@ -7,3 +7,5 @@ word-file ../files/password
 6) ansible-vault rekey
 
 7) CREATE file encrypted with vault if notn exist ansible-vault <path>/name_file.yml and the next step is include in main.yml in this case /tasks.main.yml (playbook.yml)
+
+8) ansible-playbook playbook.yml --ask-vault-pass

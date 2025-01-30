@@ -5,3 +5,5 @@ inventory.ini
 /ec2_aws/ec2_aws/tests/inventory
 /ec2_aws/ec2_aws/files/passwordnt
 nginx_mysql_vagrant/vagrant-1/.vagrant
+*.deb
+ec2_aws/ec2_aws/files/password

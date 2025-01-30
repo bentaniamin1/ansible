@@ -1,0 +1,7 @@
+// TODO: INSTALL CREATE password AWS ACCESS KEY AND SECRET KEY FOR VAULT
+
+openssl rand -base64 2048 > vault.pass
+
+
+// TODO : ADD AWS CREDENTIALS TO VAULT
+example ansible-vault encrypt_string --vault-password-file vault.pass 'AWS

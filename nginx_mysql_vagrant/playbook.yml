@@ -1,0 +1,57 @@
+---
+- name: Configure web server
+  hosts: web
+  become: yes
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Start Nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Deploy web application
+      copy:
+        content: |
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>Page ansible nginx mysql</title>
+          </head>
+          <body>
+              <h1>Hello, World!</h1>
+              <p>Test Test </p>
+          </body>
+          </html>
+        dest: /var/www/html/index.html
+
+- name: Configure database server
+  hosts: db
+  become: yes
+  tasks:
+    - name: Install MySQL
+      apt:
+        name: mysql-server
+        state: present
+
+    - name: Start MySQL service
+      service:
+        name: mysql
+        state: started
+        enabled: yes
+
+    - name: Create a database
+      mysql_db:
+        name: db_test
+        state: present
+
+    - name: Create a database user
+      mysql_user:
+        name: test
+        password: test_password
+        priv: "db_test.*:ALL"
+        state: present
