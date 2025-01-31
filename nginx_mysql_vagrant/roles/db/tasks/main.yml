@@ -36,7 +36,7 @@
     - name: Create a database user
       mysql_user:
         name: "{{ nameDb }}"
-        host: "192.168.33.10" # IP of the web server
+        host: "192.168.56.10" # IP of the web server
         password: "{{ password }}"
         priv: "{{ priv }}"
         state: present

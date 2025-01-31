@@ -7,7 +7,7 @@ app = Flask(__name__)
 def hello():
     try:
         db = mysql.connector.connect(
-            host="192.168.33.11",
+            host="192.168.56.11",
             user="test",
             password="test_password",
             database="db_test"
