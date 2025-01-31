@@ -1,0 +1,4 @@
+---
+nameDb: test
+password: test_password
+priv: "db_test.*:ALL"

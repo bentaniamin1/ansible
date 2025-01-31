@@ -1,0 +1,24 @@
+---
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present  
+- name: Start Nginx service
+  service:
+    name: nginx
+    state: started
+    enabled: yes  
+- name: Deploy web application
+  copy:
+    content: |
+      <!DOCTYPE html>
+      <html>
+      <head>
+          <title>Page ansible nginx mysql</title>
+      </head>
+      <body>
+          <h1>Hello, World!</h1>
+          <p>Test Test </p>
+      </body>
+      </html>
+    dest: {{ dest }}

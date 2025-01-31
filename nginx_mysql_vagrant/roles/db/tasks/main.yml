@@ -1,0 +1,42 @@
+---
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+      tags: db
+
+    - name: Install MySQL
+      apt:
+        name: mysql-server
+        state: present
+
+    - name: Deploy MySQL config
+      template:
+        src: my.cnf.j2
+        dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+      notify: Restart MySQL
+
+    - name: Start MySQL service
+      service:
+        name: mysql
+        state: started
+        enabled: yes
+
+        
+        
+    - name: "Install ansible python3 mysql dependency"
+      apt:
+        name: python3-mysqldb
+        state: latest
+
+    - name: Create a database
+      mysql_db:
+        name: db_test
+        state: present
+
+    - name: Create a database user
+      mysql_user:
+        name: "{{ nameDb }}"
+        host: "192.168.33.10" # IP of the web server
+        password: "{{ password }}"
+        priv: "{{ priv }}"
+        state: present

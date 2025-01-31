@@ -1,0 +1,53 @@
+---
+- name: Populate Apt's Cache with package definitions to avoid "no such package" errors
+  ansible.builtin.apt:
+    update_cache: true
+
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Deploy Nginx configuration
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/default
+  notify: Restart Nginx
+
+- name: Deploy Flask app
+  copy:
+    src: ../../app/app.py
+    dest:  "{{ dest }}"
+
+# - name: Install pip
+#   apt:
+#     name: python3-pip
+#     state: present
+#   when: ansible_distribution == 'Ubuntu'
+
+# - name: Install Flask with pip
+#   pip:
+#     name: flask
+#     executable: pip3
+
+- name: Install Python 3
+  apt:
+    name: python3
+    state: present
+
+- name: Install pip
+  apt:
+    name: python3-pip
+    state: present
+
+- name: Install Flask with pip
+  pip:
+    name: flask
+    executable: pip3
+
+- name: Install mysql-connector-python
+  pip:
+    name: mysql-connector-python
+    executable: pip3
+
+
