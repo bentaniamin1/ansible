@@ -2,6 +2,7 @@
 - name: Configure web server
   hosts: web
   become: yes
+  tags: web
   tasks:
     - name: Install Nginx
       apt:
@@ -29,10 +30,16 @@
           </html>
         dest: /var/www/html/index.html
 
+
 - name: Configure database server
   hosts: db
+  tags: db
   become: yes
   tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+      tags: db
     - name: Install MySQL
       apt:
         name: mysql-server
